@@ -47,21 +47,38 @@ client.on("message", async message => {
       .catch(console.error);
 
   try {
-    if (["p", "play"].includes(cmd)) playCmd(client, message, args);
-    else if (["pl", "playlist"].includes(cmd))
+    if (["p", "play"].includes(cmd)) {
+      playCmd(client, message, args);
+      recentlyUsed.set(member.id, cmd);
+    } else if (["pl", "playlist"].includes(cmd)) {
       playlistCmd(client, message, args);
-    else if (["s", "skip"].includes(cmd)) skipCmd(client, message);
-    else if (["v", "vol", "volume"].includes(cmd))
+      recentlyUsed.set(member.id, cmd);
+    } else if (["s", "skip"].includes(cmd)) {
+      skipCmd(client, message);
+      recentlyUsed.set(member.id, cmd);
+    } else if (["v", "vol", "volume"].includes(cmd)) {
       volCmd(client, message, args);
-    else if (["q", "queue"].includes(cmd)) queueCmd(client, message);
-    else if (["stop"].includes(cmd)) stopCmd(client, message);
-    else if (["r", "repeat"].includes(cmd)) repeatCmd(client, message);
-    else if (["sv", "setavatar"].includes(cmd)) setavatarCmd(client, message);
-    else if (["status"].includes(cmd)) statusCmd(client, message, args);
-    else if (["h", "help"].includes(cmd)) helpCmd(client, message);
+      recentlyUsed.set(member.id, cmd);
+    } else if (["q", "queue"].includes(cmd)) {
+      queueCmd(client, message);
+      recentlyUsed.set(member.id, cmd);
+    } else if (["stop"].includes(cmd)) {
+      stopCmd(client, message);
+      recentlyUsed.set(member.id, cmd);
+    } else if (["r", "repeat"].includes(cmd)) {
+      repeatCmd(client, message);
+      recentlyUsed.set(member.id, cmd);
+    } else if (["sv", "setavatar"].includes(cmd)) {
+      setavatarCmd(client, message);
+      recentlyUsed.set(member.id, cmd);
+    } else if (["status"].includes(cmd)) {
+      statusCmd(client, message, args);
+      recentlyUsed.set(member.id, cmd);
+    } else if (["h", "help"].includes(cmd)) {
+      helpCmd(client, message);
+      recentlyUsed.set(member.id, cmd);
+    }
   } catch (e) {}
-
-  recentlyUsed.set(member.id, cmd);
 
   setTimeout(
     () => (recentlyUsed.get(member.id) ? recentlyUsed.delete(member.id) : 0),

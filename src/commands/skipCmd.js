@@ -26,11 +26,21 @@ var command = async (client, message) => {
 
   var currentSong = client.queue[0];
 
+  currentSong.skipCount.add(member.id);
+
   var reqCount = voiceChannel.members.filter(m =>
     currentSong.skipCount.has(m.id)
   ).size;
 
-  var reqNeed = voiceChannel.members.filter(m => !m.user.bot).size;
+  var reqNeed = voiceChannel.members.filter(
+    m =>
+      !m.user.bot &&
+      !m.deaf &&
+      !m.user.presence.game &&
+      m.id != currentSong.user.id
+  ).size;
+
+  console.log(reqNeed);
 
   if (currentSong.user.id != member.id && reqCount < reqNeed) {
     return channel

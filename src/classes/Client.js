@@ -57,7 +57,7 @@ class MusicClient extends Client {
 
           this.queue.shift();
 
-          if (this.queue[0]) return player.play(this.queue[0].track)
+          if (this.queue[0]) return player.play(this.queue[0].track);
           else player.stop();
         });
       }, 2500);
