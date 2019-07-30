@@ -6,6 +6,8 @@ npm install
 ```
 [lavalink server](https://ci.fredboat.com/viewLog.html?buildId=lastSuccessful&buildTypeId=Lavalink_Build&tab=artifacts&guest=1)
 
+---
+
 ### how to run the project
 
 ### run lavalink server
