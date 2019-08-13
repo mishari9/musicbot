@@ -24,7 +24,7 @@ var command = async (client, message) => {
     `- 🌟 **status** \`content or none\``,
     `- 🌟 **sv,setavatar** \`image\``,
     `\n**you can use me in ${guild.name} (||${invite.url}||)**`,
-    "*`~ made by global team`*"
+    "*`~ made by mishari9`*"
   ];
 
   author
